@@ -1,0 +1,28 @@
+table{
+    border: 1px black solid;
+    width: 90%;
+    
+}
+
+tr{
+    border: 1px black solid;
+    width: 100px;
+    height: 100px;;
+}
+
+td{
+    background-color: blue;
+}
+
+.buttonText{
+    top:0;
+    background-color: #2196f3;
+    padding: 6px 24px;
+    margin: 0;
+    width: 30%;
+}
+.content{
+    width: 90%;
+    height: 5rem;
+    background-color:grey; 
+}
