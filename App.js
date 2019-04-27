@@ -7,7 +7,7 @@ import ThirdTab from './components/content/ThirdTab';
 class MyTable extends Component {
     state = {
       currComponent: <FirstTab/>,
-      active:null,
+      active:1,
     };
   
   contentOne = (ComponentName)=>{
