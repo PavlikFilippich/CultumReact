@@ -5,27 +5,22 @@ import SecondTab from './components/content/SecondTab';
 import ThirdTab from './components/content/ThirdTab';
 
 class MyTable extends Component {
-    state = {
-      active:null,
-    };
-  
-  contentOne = (indexTab)=>{
-    if(indexTab === 1) {
-      this.currComponent = <FirstTab/>;
-    }
-    else if(indexTab === 2) {
-      this.currComponent = <SecondTab/>;
-    }
-    else if(indexTab === 3) {
-      this.currComponent = <ThirdTab/>;
-    }
-    else {
-      this.currComponent = null;
-    }
+  state = {
+    key:1,
+  };
+
+  components={
+    1:<FirstTab/>,
+    2:<SecondTab/>,
+    3:<ThirdTab/>
+  }
+
+  contentOne = (key)=>{    
+    this.setState({ key });
   }  
 
-  activeTd(number) {
-    this.setState({ active: number })
+  activeTd(key) {
+    this.setState({  key })
   }
 
  
@@ -35,19 +30,19 @@ class MyTable extends Component {
         <tbody>
         <tr className="trButton">
           <td
-          className={this.state.active === 1 ? 'active' : 'buttonText'}
+          className={this.state.key === 1 ? 'active' : 'buttonText'}
           onClick={ () => {this.contentOne(1) ; this.activeTd(1)}}
           >One item</td>
           <td
-          className={this.state.active === 2 ? 'active' : 'buttonText'}
+          className={this.state.key === 2 ? 'active' : 'buttonText'}
           onClick={ () => {this.contentOne(2);this.activeTd(2)}}
           >Two item</td>
           <td
-          className={this.state.active === 3 ? 'active' : 'buttonText'}
+          className={this.state.key === 3 ? 'active' : 'buttonText'}
           onClick={ () => {this.contentOne(3);this.activeTd(3)}}
           >Three item</td>
         </tr>
-        <tr className="content">{this.currComponent}</tr>
+        <tr className="content"><span>{this.components[this.state.key]}</span></tr>
         </tbody>
       </table>
     )
