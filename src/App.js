@@ -18,11 +18,6 @@ class MyTable extends Component {
   contentOne = (key)=>{    
     this.setState({ key });
   }  
-
-  activeTd(key) {
-    this.setState({  key })
-  }
-
  
   render() {
     return(
@@ -31,15 +26,15 @@ class MyTable extends Component {
         <tr className="trButton">
           <td
           className={this.state.key === 1 ? 'active' : 'buttonText'}
-          onClick={ () => {this.contentOne(1) ; this.activeTd(1)}}
+          onClick={ () => {this.contentOne(1)}}
           >One item</td>
           <td
           className={this.state.key === 2 ? 'active' : 'buttonText'}
-          onClick={ () => {this.contentOne(2);this.activeTd(2)}}
+          onClick={ () => {this.contentOne(2)}}
           >Two item</td>
           <td
           className={this.state.key === 3 ? 'active' : 'buttonText'}
-          onClick={ () => {this.contentOne(3);this.activeTd(3)}}
+          onClick={ () => {this.contentOne(3)}}
           >Three item</td>
         </tr>
         <tr className="content"><span>{this.components[this.state.key]}</span></tr>
