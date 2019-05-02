@@ -6,38 +6,41 @@ import ThirdTab from './components/content/ThirdTab';
 
 class MyTable extends Component {
   state = {
-    key:1,
+    array:[
+      {id:1,component:<FirstTab/>, name:"One item"},
+      {id:2,component:<SecondTab/>, name:"Two Item"},
+      {id:3,component:<ThirdTab/>, name:"Three item"},
+    ],
+    currComponentId: 1
   };
 
-  components={
-    1:<FirstTab/>,
-    2:<SecondTab/>,
-    3:<ThirdTab/>
+  changeComponentName = (idComponent) => {
+    this.setState({currComponentId:idComponent});
   }
-
-  contentOne = (key)=>{    
-    this.setState({ key });
-  }  
  
   render() {
+    const selectedElement = this.state.array.find(
+      (item) => item.id === this.state.currComponentId
+    );
     return(
       <table>
         <tbody>
-        <tr className="trButton">
-          <td
-          className={this.state.key === 1 ? 'active' : 'buttonText'}
-          onClick={ () => {this.contentOne(1)}}
-          >One item</td>
-          <td
-          className={this.state.key === 2 ? 'active' : 'buttonText'}
-          onClick={ () => {this.contentOne(2)}}
-          >Two item</td>
-          <td
-          className={this.state.key === 3 ? 'active' : 'buttonText'}
-          onClick={ () => {this.contentOne(3)}}
-          >Three item</td>
-        </tr>
-        <tr className="content"><span>{this.components[this.state.key]}</span></tr>
+          <tr className="trButton">
+            {
+              this.state.array.map( (element) => {
+                return (
+                  <td 
+                    className={this.state.currComponentId === element.id ? 'active' : 'buttonText'}
+                    onClick={ () => this.changeComponentName(element.id)}
+                    >{element.name}
+                  </td>
+                )
+              }) 
+            }
+          </tr>
+          <tr className="content">
+           {selectedElement.component}   
+          </tr>
         </tbody>
       </table>
     )
