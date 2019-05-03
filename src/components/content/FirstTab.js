@@ -1,10 +1,8 @@
 import React from 'react';
  
 function FirstTab() {
-    return (
-        
-            <span>Item One</span>
-        
+    return (    
+        <td>Item One</td>
     )
 }
 
