@@ -19,9 +19,7 @@ class MyTable extends Component {
   }
  
   render() {
-    const selectedElement = this.state.array.find(
-      (item) => item.id === this.state.currComponentId
-    );
+    const selectedElement = this.state.array.find(item => item.id === this.state.currComponentId);
     return(
       <table>
         <tbody>
